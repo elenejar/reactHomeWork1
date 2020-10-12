@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import UserInput from './UserInput';
+import UserOutput from './UserOutput';
+
+
 
 function App() {
+  const [inputValue, setInputValue] = useState("");
+  const username = ['John', 'Dodo', 'Malvina'];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <UserInput 
+      value={inputValue}        
+       onChange={({target}) =>{
+         if (inputValue.length < 50)
+         {
+          setInputValue(target.value)
+         }}}/>
+
+        <h1>{inputValue}</h1>
+        <hr />
+        <UserOutput username={username} />
     </div>
   );
-}
-
+  };
 export default App;
